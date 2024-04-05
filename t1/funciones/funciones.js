@@ -19,15 +19,4 @@ function saludar(nombre){
      var suma = n1 + n2;
      alert("el resultado de "+n1+" y "+n2+ " es: "+suma);
     }
-    }
-      
-
-   
-    //condicional if para ver menor
-    
-//operadores logicos y numericos
-
-
-//fetch revisar de javascrip  rick and morty
-//GET  https://rickandmortyapi.com/api/character
-//PETICIONES HTTP JSON Y FUNCION JAVASCRIP FETCH
+    };
