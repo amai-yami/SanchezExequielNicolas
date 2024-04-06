@@ -20,11 +20,18 @@ const personaje={
     ],
     "url": "https://rickandmortyapi.com/api/character/140",
     "created": "2017-12-27T18:47:44.566Z"
-}
+} 
+  console.log(personaje.origin.url);
 
-  document.getElementById("result").innerHTML=""
+  function per(){
 
- console.log(personaje.origin.url);
+    document.getElementById("numeral").innerHTML=personaje.dni
+    document.getElementById("result").innerHTML="el personaje "+personaje.name+" esta "+ personaje.status
+
+  }
+ 
+
+ 
 
  const jugador={
    
@@ -41,3 +48,4 @@ const personaje={
 console.log(jugador.name);
 
 //826     el personaje : nombre  esta:  status vivio o muerto
+// un imput que pida los datos y luego los muestre
