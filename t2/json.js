@@ -23,15 +23,18 @@ const personaje={
 } 
   console.log(personaje.origin.url);
 
-  function per(){
 
-    document.getElementById("numeral").innerHTML=personaje.dni
-    document.getElementById("result").innerHTML="el personaje "+personaje.name+" esta "+ personaje.status
+function mostrar(){
+    var n=document.getElementById("numeral").value;
+    if (personaje.id==n ) {
+      document.getElementById("result").innerHTML="el personaje "+personaje.name+" esta "+ personaje.status
+      }else {
+        console.log("Los valores son diferentes.");
+      }
+    }
 
-  }
- 
 
- 
+      //document.getElementById("result").innerHTML="el personaje "+personaje.name+" esta "+ personaje.status
 
  const jugador={
    

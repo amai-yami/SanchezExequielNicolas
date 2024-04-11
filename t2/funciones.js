@@ -1,4 +1,4 @@
-alert("hola mundo");
+//alert("hola mundo");
 
 let frutas = ['pera','manzana','frutilla','banana','durazno'];
 
