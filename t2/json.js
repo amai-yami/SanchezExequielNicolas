@@ -1,40 +1,77 @@
+// Agrega un evento 'click' al botón con ID 'comparten'
+document.getElementById('comparten').addEventListener('click', busqueda);
 
-const personaje={
-    "id": 140,
-    "name": "Genital Washer",
-    "status": "Alive",
-    "species": "Human",
-    "type": "",
-    "gender": "Male",
-    "origin": {
-        "name": "Post-Apocalyptic Earth",
-        "url": "https://rickandmortyapi.com/api/location/8"
-    },
-    "location": {
-        "name": "Post-Apocalyptic Earth",
-        "url": "https://rickandmortyapi.com/api/location/8"
-    },
-    "image": "https://rickandmortyapi.com/api/character/avatar/140.jpeg",
-    "episode": [
-        "https://rickandmortyapi.com/api/episode/23"
-    ],
-    "url": "https://rickandmortyapi.com/api/character/140",
-    "created": "2017-12-27T18:47:44.566Z"
-} 
-  console.log(personaje.origin.url);
+// Función que se ejecuta cuando se hace clic en el botón
+function busqueda() {
+  // Obtiene los valores de los inputs
+  const n = document.getElementById('char1').value;
+  const n2 = document.getElementById('char2').value;
 
+  // Realiza la solicitud a la API con los IDs de los personajes
+  fetch('https://rickandmortyapi.com/api/character/' + n + ',' + n2)
+    .then(response => response.json())
+    .then(data => {
+      // Obtiene los datos de los personajes
 
-function mostrar(){
-    var n=document.getElementById("numeral").value;
-    if (personaje.id==n ) {
-      document.getElementById("result").innerHTML="el personaje "+personaje.name+" esta "+ personaje.status
-      }else {
-        console.log("Los valores son diferentes.");
+      if ( n!= n2) {
+        var character1 = data[0];
+         var character2 = data[1];
+       }else{
+        var character1= data[0];
+        var character2 = data[0];
       }
-    }
+  
 
+      // Muestra la información de los personajes
+      mostrar(character1, 'personaje1');
+      mostrar(character2, 'personaje2');
 
-      //document.getElementById("result").innerHTML="el personaje "+personaje.name+" esta "+ personaje.status
+      // Compara los géneros de los personajes
+      if (character1.gender == character2.gender) {
+        mresultado('es igual');
+   
+      } else {
+        mresultado('no es igual');
+        
+      }
+    })
+    .catch(error => console.error('error al obtener los personajes', error));
+}
+
+// Función para mostrar la información de un personaje
+function mostrar(character, id) {
+  let container = document.getElementById(id);
+  container.innerHTML = `
+    <p>${character.name}</p>
+    <img src="${character.image}" alt="${character.name}">
+  `;
+}
+// Función para mostrar la información de un personaje
+function mostrar(character, id) {
+  let container = document.getElementById(id);
+  container.innerHTML = `
+    <p>${character.name}</p>
+    <img src="${character.image}" alt="${character.name}">
+  `;
+}
+
+// Función para mostrar el resultado de la comparación
+function mresultado(resultado) {
+  const resultadodiv = document.getElementById('resultado');
+  resultadodiv.innerText = resultado;
+
+  const check = document.getElementById('checkmark');
+  const cruz = document.getElementById('cross');
+
+  if (resultado == 'es igual')  {
+    check.innerHTML = '<img src="tilde.png" alt="géneros iguales">';
+    cruz.innerHTML = '';
+  } else {
+    cruz.innerHTML = '<img src="cruz.png" alt="géneros diferentes">';
+    check.innerHTML = '';
+  }
+}
+
 
  const jugador={
    
@@ -50,5 +87,7 @@ function mostrar(){
  }
 console.log(jugador.name);
 
-//826     el personaje : nombre  esta:  status vivio o muerto
-// un imput que pida los datos y luego los muestre
+//consigna tp2   en html 2 imput    2 id    y el boton buscar   y mostrar 2 fotos  
+//si el gender es igual  foto con v y si no una cruz x
+
+    
